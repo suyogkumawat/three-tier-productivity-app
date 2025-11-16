@@ -8,7 +8,14 @@ dotenv.config();
 const app = express();
 
 // Middlewares
-app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true }));
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || "http://107.21.150.218:8082",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+}));
+app.options("*", cors()); // Enable preflight support
+
 app.use(express.json());
 
 // Health check for Kubernetes
