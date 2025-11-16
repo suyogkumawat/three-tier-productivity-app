@@ -1,11 +1,20 @@
-FROM node:20-alpine AS build
+FROM node:20-alpine
+
 WORKDIR /app
 
+# Copy package files
 COPY package*.json ./
-RUN npm ci
 
+# Install dependencies
+RUN npm install
+
+# Copy source code
 COPY . .
-RUN npm prune --omit=dev  # remove dev deps for production
 
+# Expose backend port
 EXPOSE 4000
+
+# Start the server
+#CMD ["node", "server.js"]
+
 CMD ["node", "src/server.js"]
