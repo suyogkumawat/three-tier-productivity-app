@@ -1,0 +1,11 @@
+# Backend ownership
+/backend/ @be-team
+
+# Frontend ownership
+/frontend/ @fe-team
+
+# Infrastructure, Helm, CI/CD
+/.github/workflows/ @suyogkumawat
+
+# Default fallback
+* @suyogkumawat
